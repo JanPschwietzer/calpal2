@@ -1,6 +1,7 @@
 import 'package:calpal2/backend/sqlite.dart';
-import 'package:calpal2/calorietracker_page/calorietracker_page_bloc.dart';
-import 'package:calpal2/calorietracker_page/edit_product/edit_product_page.dart';
+import 'package:calpal2/pages/calorietracker/add_product/add_product_page.dart';
+import 'package:calpal2/pages/calorietracker/calorietracker_page_bloc.dart';
+import 'package:calpal2/pages/calorietracker/edit_product/edit_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -187,7 +188,7 @@ class CalorieTrackerPageContent extends StatelessWidget {
                         IconButton(
                           icon: const Icon(Icons.add),
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProductPage(tabKey: '')));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const AddProductPage(tabKey: '')));
                           },
                         ) :
                         IconButton(

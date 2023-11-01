@@ -1,35 +1,39 @@
-import 'package:calpal2/calorietracker_page/calorietracker_page.dart';
-import 'package:calpal2/settings_page/settings_page.dart';
+import 'package:calpal2/pages/calorietracker/calorietracker_page.dart';
+import 'package:calpal2/pages/habits/add_habit/add_habit_page.dart';
+import 'package:calpal2/pages/habits/habits_page.dart';
+import 'package:calpal2/pages/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  int index;
+  HomePage({this.index = 0, super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
-  var _currentPage = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('CalPal'),
         actions: [
-          _currentPage == 0 ? IconButton(
+          if (widget.index == 0) IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SettingsPage())),
-          ) : const SizedBox(),
+          ),
+          if (widget.index == 1) IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AddHabitPage())),
+          ),
         ],
       ),
       body: IndexedStack(
-        index: _currentPage,
+        index: widget.index,
         children: const [
           CalorieTrackerPage(),
-          Placeholder(),
+          HabitsPage(),
           Placeholder(),
           Placeholder()
         ],
@@ -52,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           label: 'Show History',
         ),
       ],
-      selectedIndex: _currentPage,
+      selectedIndex: widget.index,
       indicatorColor: const Color.fromARGB(32, 37, 61, 120),
       onDestinationSelected: _onItemTapped,
       labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
@@ -62,7 +66,7 @@ class _HomePageState extends State<HomePage> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _currentPage = index;
+      widget.index = index;
     });
   }
 }

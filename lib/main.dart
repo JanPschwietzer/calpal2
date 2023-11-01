@@ -1,6 +1,6 @@
 import 'package:calpal2/backend/shared_preferences.dart';
 import 'package:calpal2/backend/sqlite.dart';
-import 'package:calpal2/home_page.dart';
+import 'package:calpal2/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomePage()
+      home: HomePage()
     );
   }
 }

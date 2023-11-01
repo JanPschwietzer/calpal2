@@ -1,5 +1,5 @@
-import 'package:calpal2/home_page.dart';
-import 'package:calpal2/settings_page/settings_page_bloc.dart';
+import 'package:calpal2/pages/home_page.dart';
+import 'package:calpal2/pages/settings/settings_page_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +14,7 @@ class SettingsPage extends StatelessWidget {
         title: const Text('Einstellungen'),
         actions: [IconButton(
           icon: const Icon(Icons.close),
-          onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage())),
+          onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage())),
         )]
       ),
       body: ChangeNotifierProvider(

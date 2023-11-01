@@ -1,20 +1,20 @@
-import 'package:calpal2/calorietracker_page/add_product/add_product_page_bloc.dart';
+import 'package:calpal2/pages/calorietracker/edit_product/edit_product_page_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-class AddProductPage extends StatelessWidget {
+class EditProductPage extends StatelessWidget {
   final String tabKey;
-  const AddProductPage({Key? key,required this.tabKey}) : super(key: key);
+  const EditProductPage({Key? key,required this.tabKey}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Produkt hinzufügen'),
+        title: const Text('Produkt ändern'),
       ),
-      body: ChangeNotifierProvider(create: (context) => AddProductPageBloc(tabKey, context),
-        child: Consumer<AddProductPageBloc>(builder: (context, bloc, child) =>
+      body: ChangeNotifierProvider(create: (context) => EditProductPageBloc(tabKey),
+        child: Consumer<EditProductPageBloc>(builder: (context, bloc, child) =>
           SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(20.0),

@@ -1,6 +1,6 @@
 import 'package:calpal2/backend/shared_preferences.dart';
 import 'package:calpal2/backend/sqlite.dart';
-import 'package:calpal2/calorietracker_page/add_product/add_product_page.dart';
+import 'package:calpal2/pages/calorietracker/add_product/add_product_page.dart';
 import 'package:calpal2/helper_widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

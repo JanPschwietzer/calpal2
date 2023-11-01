@@ -1,64 +1,6 @@
+import 'package:calpal2/models/db_product.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:uuid/uuid.dart';
-
-class DatabaseProduct {
-  static const uuid = Uuid();
-
-  String? id = uuid.v1();
-  String mealtime = ''; // "breakfast", "lunch", "dinner", "snack"
-  String date = '';
-  String name = '';
-  String brand = '';
-  int amount = 0;
-  int calories = 0;
-  double protein = 0;
-  double carbs = 0;
-  double sugar = 0;
-  double fat = 0;
-  double saturatedFat = 0;
-  double fiber = 0;
-  double salt = 0;
-  String image = '';
-
-  DatabaseProduct({
-    this.id,
-    required this.mealtime,
-    required this.date,
-    required this.name,
-    required this.brand,
-    required this.amount,
-    required this.calories,
-    required this.protein,
-    required this.carbs,
-    required this.sugar,
-    required this.fat,
-    required this.saturatedFat,
-    required this.fiber,
-    required this.salt,
-    required this.image,
-  });
-
-  Map<String, dynamic> toMap() {
-    return {
-      "id": id,
-      "mealtime": mealtime, // "breakfast", "lunch", "dinner", "snack"
-      "date": date,
-      "name": name,
-      "brand": brand,
-      "amount": amount,
-      "calories": calories,
-      "protein": protein,
-      "carbs": carbs,
-      "sugar": sugar,
-      "fat": fat,
-      "saturatedFat": saturatedFat,
-      "fiber": fiber,
-      "salt": salt,
-      "image": image,
-    };
-  }
-}
 
 class SQLiteDatabase {
   static Database? database;
@@ -68,7 +10,11 @@ class SQLiteDatabase {
     database = await openDatabase(join(await getDatabasesPath(), 'calpal.db'),
       onCreate: (db, version) {
         return db.execute(
-          'CREATE TABLE eaten_products(id TEXT PRIMARY KEY, mealtime TEXT, date TEXT, name TEXT, brand TEXT, amount INTEGER, calories INTEGER, protein REAL, carbs REAL, sugar REAL, fat REAL, saturatedFat REAL, fiber REAL, salt REAL, image TEXT)'
+          '''
+          CREATE TABLE eaten_products(id TEXT PRIMARY KEY, mealtime TEXT, date TEXT, name TEXT, brand TEXT, amount INTEGER, calories INTEGER, protein REAL, carbs REAL, sugar REAL, fat REAL, saturatedFat REAL, fiber REAL, salt REAL, image TEXT)
+          CREATE TABLE habits(id TEXT PRIMARY KEY, name TEXT, description TEXT, frequency INTEGER, datetime TEXT, icon TEXT)
+          CREATE TABLE supplements(id TEXT PRIMARY KEY, name TEXT, description TEXT, frequency INTEGER, datetime TEXT)
+          ''',
         );
       },
       version: 1,

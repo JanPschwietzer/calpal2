@@ -1,6 +1,6 @@
 name: calpal2
 description: Zähle deine Kalorien mit CalPal
-version: 2.0.2+1
+version: 2.0.3+1
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -33,6 +33,7 @@ dependencies:
   http: ^1.1.0
   flutter_local_notifications: ^16.1.0
   uuid: ^4.1.0
+  string_2_icon: ^0.0.2
 
 dev_dependencies:
   flutter_test:

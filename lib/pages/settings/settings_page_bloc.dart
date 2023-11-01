@@ -1,5 +1,5 @@
 import 'package:calpal2/backend/shared_preferences.dart';
-import 'package:calpal2/home_page.dart';
+import 'package:calpal2/pages/home_page.dart';
 import 'package:calpal2/models/user_settings.dart';
 import 'package:flutter/material.dart';
 
@@ -117,7 +117,7 @@ class SettingsPageBloc extends ChangeNotifier {
       )
     );
 
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
 
     getSettings();
 
