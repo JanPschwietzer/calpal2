@@ -13,17 +13,19 @@ class DatabaseHabit {
   String? id;
   String name;
   String description;
+  int frequencyNumber;
   HabitFrequency frequency;
-  DateTime datetime;
-  String icon;
+  DateTime? lastTimeFinished;
+  int streak = 0;
 
   DatabaseHabit({
     this.id = '',
     required this.name,
     required this.description,
+    required this.frequencyNumber,
     required this.frequency,
-    required this.datetime,
-    required this.icon,
+    this.lastTimeFinished,
+    this.streak = 0,
   }) {
         if (id == '') {
       id = uuid.v1();
@@ -36,8 +38,6 @@ class DatabaseHabit {
       'name': name,
       'description': description,
       'frequency': frequency,
-      'datetime': datetime,
-      'icon': icon,
     };
   }
 }

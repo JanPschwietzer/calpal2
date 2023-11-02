@@ -10,56 +10,54 @@ class HabitsPage extends StatelessWidget {
     return ChangeNotifierProvider(
         create: (context) => HabitsPageBloc(),
         child: Consumer<HabitsPageBloc>(builder: (context, bloc, child) => 
-        Expanded(
-          child: SingleChildScrollView(
-            child: ListView(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                const SizedBox(height: 20),
-                const Text('Gewohnheiten'),
-                const SizedBox(height: 20),
-                ListView.builder(
+        Column(
+          children: [
+            const SizedBox(height: 20),
+            const Text('Gewohnheiten'),
+            const SizedBox(height: 20),
+            Expanded(
+              child: SingleChildScrollView(
+                child: ListView(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: bloc.habits.length,
-                  itemBuilder: (context, index) => ListTile(
-                    title: Text(bloc.habits[index].name),
-                    subtitle: Text(bloc.habits[index].description),
-                    leading: SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(45),
+                  children: [
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: bloc.habits.length,
+                      itemBuilder: (context, index) => ListTile(
+                        enabled: bloc.checkTaskEnabled(index),
+                        title: Text(bloc.habits[index].name),
+                        subtitle: Text(bloc.habits[index].description),
+                        leading: SizedBox(
+                          width: 70,
+                          height: 50,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: bloc.getStreakColor(bloc.habits[index].streak),
+                              borderRadius: BorderRadius.circular(50),
+                              border: Border.all(color: Colors.black12, width: 1),
+                            ),
+                            child: Center(child: Text(bloc.habits[index].streak.toString(), style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            
+                            )),)
+                          ),
                         ),
-                        child: const Center(child: Text("1.500", style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        
-                        )),)
-                      ),
-                    ),
-                    trailing: Wrap(
-                      spacing: 12,
-                      children: [
-                        IconButton(
+                        trailing: IconButton(
                           icon: const Icon(Icons.edit),
                           onPressed: () => {},
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.check_box_outline_blank),
-                          onPressed: () => {},
-                        ),
-                      ]
+                        onLongPress: () => { bloc.finishTask(index)},
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         )));
   }
 }
