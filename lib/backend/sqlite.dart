@@ -11,9 +11,9 @@ class SQLiteDatabase {
       onCreate: (db, version) {
         return db.execute(
           '''
-          CREATE TABLE eaten_products(id TEXT PRIMARY KEY, mealtime TEXT, date TEXT, name TEXT, brand TEXT, amount INTEGER, calories INTEGER, protein REAL, carbs REAL, sugar REAL, fat REAL, saturatedFat REAL, fiber REAL, salt REAL, image TEXT)
-          CREATE TABLE habits(id TEXT PRIMARY KEY, name TEXT, description TEXT, frequency INTEGER, datetime TEXT, icon TEXT)
-          CREATE TABLE supplements(id TEXT PRIMARY KEY, name TEXT, description TEXT, frequency INTEGER, datetime TEXT)
+          CREATE TABLE eaten_products(id TEXT PRIMARY KEY, mealtime TEXT, date TEXT, name TEXT, brand TEXT, amount INTEGER, calories INTEGER, protein REAL, carbs REAL, sugar REAL, fat REAL, saturatedFat REAL, fiber REAL, salt REAL, image TEXT);
+          CREATE TABLE habits(id TEXT PRIMARY KEY, name TEXT, description TEXT, frequency INTEGER, datetime TEXT, icon TEXT);
+          CREATE TABLE supplements(id TEXT PRIMARY KEY, name TEXT, description TEXT, frequency INTEGER, datetime TEXT);
           ''',
         );
       },

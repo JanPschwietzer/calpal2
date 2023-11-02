@@ -12,7 +12,7 @@ class AddHabitPage extends StatelessWidget {
         actions: [
           IconButton(
           icon: const Icon(Icons.close),
-          onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(index: 1))
+          onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage(index: 1))
           )
         ),
         ],

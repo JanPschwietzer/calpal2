@@ -14,7 +14,7 @@ class SettingsPage extends StatelessWidget {
         title: const Text('Einstellungen'),
         actions: [IconButton(
           icon: const Icon(Icons.close),
-          onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage())),
+          onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage())),
         )]
       ),
       body: ChangeNotifierProvider(

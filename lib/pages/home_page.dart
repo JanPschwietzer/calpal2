@@ -4,33 +4,37 @@ import 'package:calpal2/pages/habits/habits_page.dart';
 import 'package:calpal2/pages/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 
+
 class HomePage extends StatefulWidget {
-  int index;
-  HomePage({this.index = 0, super.key});
+  final int index;
+  const HomePage({this.index = 0, super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('CalPal'),
         actions: [
-          if (widget.index == 0) IconButton(
+          if (_currentIndex == 0) IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SettingsPage())),
           ),
-          if (widget.index == 1) IconButton(
+          if (_currentIndex == 1) IconButton(
             icon: const Icon(Icons.add),
             onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AddHabitPage())),
           ),
         ],
       ),
       body: IndexedStack(
-        index: widget.index,
+        index: _currentIndex,
         children: const [
           CalorieTrackerPage(),
           HabitsPage(),
@@ -56,7 +60,7 @@ class _HomePageState extends State<HomePage> {
           label: 'Show History',
         ),
       ],
-      selectedIndex: widget.index,
+      selectedIndex: _currentIndex,
       indicatorColor: const Color.fromARGB(32, 37, 61, 120),
       onDestinationSelected: _onItemTapped,
       labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
@@ -66,7 +70,13 @@ class _HomePageState extends State<HomePage> {
 
   void _onItemTapped(int index) {
     setState(() {
-      widget.index = index;
+      _currentIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.index;
   }
 }
