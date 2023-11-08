@@ -16,7 +16,7 @@ CalPal ist mehr als nur eine App - es ist dein treuer Begleiter auf dem Weg zu e
 
 ## Tracke deine Gewohnheiten!
 CalPal lässt dich deine Gewohnheiten tracken. Wähle aus in welchen Rhythmus du deine Gewohnheiten erledigen willst und schließe fällige Gewohnheiten ab! Deine Streak wird sich freuen!
-![Erhalte Tiefere Einblicke in deine Kalorienaufnahme.](./images/habits.png)
+<img src="./images/habits.png" alt="Verfolge deine Gewohnheiten." height="500"/>
 
 ### Todo:
 - Trainingsdatenerfassung und Übersicht (Implementierung in Kalorienzähler)
