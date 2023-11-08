@@ -1,5 +1,6 @@
 # CalPal
 Willkommen in der Welt von CalPal - deiner ultimativen Kalorientracking-App für iOS und Android! Wir präsentieren eine intelligente und benutzerfreundliche Anwendung, die dir hilft, deine Gesundheits- und Fitnessziele zu erreichen, indem sie dir dabei hilft, deine tägliche Kalorienaufnahme zu verfolgen und zu optimieren.
+![Erhalte Tiefere Einblicke in deine Kalorienaufnahme.](./images/homepage.png)
 
 ## Intuitives Tracking
 CalPal bietet eine nahtlose Benutzererfahrung. Scanne einfach Barcodes von Lebensmitteln, wähle aus einer umfangreichen Datenbank oder füge Mahlzeiten manuell hinzu. Verfolge Kalorien, Makronährstoffe und mehr, um ein genaues Bild deiner Ernährung zu erhalten.
@@ -9,21 +10,21 @@ Deine individuellen Ziele stehen im Mittelpunkt. Gib deine Zielsetzungen ein - s
 
 ## Fortschrittliche Analysen
 Erhalte tiefere Einblicke in deine Ernährungsgewohnheiten. Verfolge nicht nur Kalorien, sondern auch Nährstoffe wie Protein, Kohlenhydrate und Fett. Unsere App liefert dir visuelle Berichte und Diagramme, um deinen Fortschritt zu überwachen.
-![Erhalte Tiefere Einblicke in deine Nährstoffaufnahme.](./images/homepage_nutrition.png)
 
 ## Lebe gesünder!
 CalPal ist mehr als nur eine App - es ist dein treuer Begleiter auf dem Weg zu einem gesünderen Lebensstil. Egal, ob du abnehmen, Muskeln aufbauen oder einfach bewusster essen möchtest, CalPal bietet die Werkzeuge und Unterstützung, die du benötigst. Starte heute deine Reise zu einem fitteren und vitaleren Ich mit CalPal!
 
+## Tracke deine Gewohnheiten!
+CalPal lässt dich deine Gewohnheiten tracken. Wähle aus in welchen Rhythmus du deine Gewohnheiten erledigen willst und schließe fällige Gewohnheiten ab! Deine Streak wird sich freuen!
+![Erhalte Tiefere Einblicke in deine Kalorienaufnahme.](./images/habits.png)
+
 ### Todo:
-- ~~Hinzufügen von manuellen Ernährungsdaten~~
-- ~~Hinzufügen von Produkten via Barcodescanner (+ Senden an mich zum Hinzufügen in Datenbank)~~
-- Trainingsdatenerfassung und Übersicht
+- Trainingsdatenerfassung und Übersicht (Implementierung in Kalorienzähler)
 - Wochenübersichts-Tab.
+- Supplements Tab
 
 ### Ideen:
-- Rezepte Tab
-- Schrittzähler
-- Freunde/Herausforderungen
+- Schrittzähler im Gewohnheiten Tab?
 - Werbung oder Premiummodell?
 
-Stand 31.08.2023 umfasst das Projekt circa 2000 Zeilen Code.
+Stand 08.11.2023 umfasst das Projekt circa 2300 Zeilen Code.
