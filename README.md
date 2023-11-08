@@ -1,6 +1,7 @@
 # CalPal
 Willkommen in der Welt von CalPal - deiner ultimativen Kalorientracking-App für iOS und Android! Wir präsentieren eine intelligente und benutzerfreundliche Anwendung, die dir hilft, deine Gesundheits- und Fitnessziele zu erreichen, indem sie dir dabei hilft, deine tägliche Kalorienaufnahme zu verfolgen und zu optimieren.
-![Erhalte Tiefere Einblicke in deine Kalorienaufnahme.](./images/homepage.png)
+
+<img src="./images/homepage.png" alt="Erhalte Tiefere Einblicke in deine Kalorienaufnahme." height="500">
 
 ## Intuitives Tracking
 CalPal bietet eine nahtlose Benutzererfahrung. Scanne einfach Barcodes von Lebensmitteln, wähle aus einer umfangreichen Datenbank oder füge Mahlzeiten manuell hinzu. Verfolge Kalorien, Makronährstoffe und mehr, um ein genaues Bild deiner Ernährung zu erhalten.
@@ -16,6 +17,7 @@ CalPal ist mehr als nur eine App - es ist dein treuer Begleiter auf dem Weg zu e
 
 ## Tracke deine Gewohnheiten!
 CalPal lässt dich deine Gewohnheiten tracken. Wähle aus in welchen Rhythmus du deine Gewohnheiten erledigen willst und schließe fällige Gewohnheiten ab! Deine Streak wird sich freuen!
+
 <img src="./images/habits.png" alt="Verfolge deine Gewohnheiten." height="500"/>
 
 ### Todo:
