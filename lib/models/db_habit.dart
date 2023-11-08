@@ -37,7 +37,10 @@ class DatabaseHabit {
       'id': id,
       'name': name,
       'description': description,
+      'frequencyNumber': frequencyNumber,
       'frequency': frequency,
+      'lastTimeFinished': lastTimeFinished?.toIso8601String(),
+      'streak': streak,
     };
   }
 }

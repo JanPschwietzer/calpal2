@@ -1,4 +1,5 @@
 import 'package:calpal2/models/db_habit.dart';
+import 'package:calpal2/pages/habits/edit_habit/edit_habit_page.dart';
 import 'package:flutter/material.dart';
 
 enum StreakColor {
@@ -25,8 +26,8 @@ extension StreakColorExtension on StreakColor {
 class HabitsPageBloc extends ChangeNotifier {
 
   List<DatabaseHabit> _habits = [
-    DatabaseHabit(name: "Selbst kochen", description: "Eine gesunde Mahlzeit kochen", frequencyNumber: 3, frequency: HabitFrequency.daily, lastTimeFinished: DateTime(2023, 10, 30), streak: 0),
-    DatabaseHabit(name: "Sport treiben", description: "Im Fitnessstudio", frequencyNumber: 1, frequency: HabitFrequency.daily, streak: 9),
+    DatabaseHabit(name: "Selbst kochen", description: "Eine gesunde Mahlzeit kochen", frequencyNumber: 1, frequency: HabitFrequency.daily, lastTimeFinished: DateTime(2023, 11, 7), streak: 1),
+    DatabaseHabit(name: "Sport treiben", description: "Im Fitnessstudio", frequencyNumber: 3, frequency: HabitFrequency.daily, lastTimeFinished: DateTime(2023, 11, 7), streak: 9),
   ];
   get habits => _habits;
   set habits(value) {
@@ -40,22 +41,82 @@ class HabitsPageBloc extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool checkTaskEnabled(int index) {
-    
-    DatabaseHabit habit = habits[index];
+  void editHabit(int index, BuildContext context) async {
+    if (!context.mounted) {
+      return;
+    }
+    final result = await Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditHabitPage(habit: habits[index])));
 
+    if (result != null) {
+      habits[index] = result;
+      checkSteaks();
+      notifyListeners();
+    }
+  }
+
+  void checkSteaks() {
+    for (DatabaseHabit habit in habits) {
+      if (!checkStreakWillSurvive(habit)) {
+        habit.streak = 0;
+      }
+    }
+  }
+
+  String getDueDate(int index) {
+    DatabaseHabit habit = habits[index];
+    int days = 0;
+
+    if (habit.lastTimeFinished == null) {
+      return 'Heute fällig!';
+    }
+
+    switch(habit.frequency) {
+      case (HabitFrequency.daily):
+        days = habit.lastTimeFinished!.add(Duration(days: habit.frequencyNumber + 1)).difference(DateTime.now()).inDays;
+        break;
+      case (HabitFrequency.weekly):
+        days = habit.lastTimeFinished!.add(Duration(days: (habit.frequencyNumber + 1) * 7)).difference(DateTime.now()).inDays;
+        break;
+      case (HabitFrequency.monthly):
+        days = habit.lastTimeFinished!.add(Duration(days: (habit.frequencyNumber + 1) * 30)).difference(DateTime.now()).inDays;
+        break;
+      case (HabitFrequency.yearly):
+        days = habit.lastTimeFinished!.add(Duration(days: (habit.frequencyNumber + 1) * 365)).difference(DateTime.now()).inDays;
+        break;
+    }
+
+    if (days <= 0) {
+      return 'Heute fällig!';
+    } else if (days == 1) {
+      return 'Morgen fällig!';
+    } else if (days > 1) {
+      return 'In ${days.abs()} Tagen fällig!';
+    }
+    return '';
+  }
+
+  bool checkStreakWillSurvive(DatabaseHabit habit) {
     if (habit.lastTimeFinished == null) {
       return true;
     }
 
     if (habit.frequency == HabitFrequency.daily) {
-      return habit.lastTimeFinished!.add(Duration(days: habit.frequencyNumber)).isBefore(DateTime.now());
+      return habit.lastTimeFinished!.add(Duration(days: habit.frequencyNumber)).isAfter(DateTime.now().subtract(const Duration(days: 1)));
     } else if (habit.frequency == HabitFrequency.weekly) {
-      return habit.lastTimeFinished!.add(Duration(days: habit.frequencyNumber * 7)).isBefore(DateTime.now());
+      return habit.lastTimeFinished!.add(Duration(days: habit.frequencyNumber * 7)).isAfter(DateTime.now().subtract(const Duration(days: 7)));
     } else if (habit.frequency == HabitFrequency.monthly) {
-      return habit.lastTimeFinished!.add(Duration(days: habit.frequencyNumber * 30)).isBefore(DateTime.now());
+      return habit.lastTimeFinished!.add(Duration(days: habit.frequencyNumber * 30)).isAfter(DateTime.now().subtract(const Duration(days: 30)));
     }
     return true;
+  }
+
+  bool checkTaskEnabled(int index) {
+    DatabaseHabit habit = habits[index];
+
+    if (habit.lastTimeFinished == null) {
+      return true;
+    }
+    return habit.lastTimeFinished!.add(const Duration(days: 1)).isBefore(DateTime.now());
   }
 
   Color getStreakColor(int streak) {
@@ -70,6 +131,9 @@ class HabitsPageBloc extends ChangeNotifier {
     }
   }
 
+  HabitsPageBloc() {
+    checkSteaks();
+  }
 
 
 }

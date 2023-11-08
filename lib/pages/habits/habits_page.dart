@@ -27,8 +27,8 @@ class HabitsPage extends StatelessWidget {
                       itemCount: bloc.habits.length,
                       itemBuilder: (context, index) => ListTile(
                         enabled: bloc.checkTaskEnabled(index),
-                        title: Text(bloc.habits[index].name),
-                        subtitle: Text(bloc.habits[index].description),
+                        title: Text(bloc.habits[index].name.length > 22 ? bloc.habits[index].name.substring(0, 22) + '...' : bloc.habits[index].name),
+                        subtitle: Text(bloc.getDueDate(index)),
                         leading: SizedBox(
                           width: 70,
                           height: 50,
@@ -48,7 +48,7 @@ class HabitsPage extends StatelessWidget {
                         ),
                         trailing: IconButton(
                           icon: const Icon(Icons.edit),
-                          onPressed: () => {},
+                          onPressed: () => { bloc.editHabit(index, context)},
                         ),
                         onLongPress: () => { bloc.finishTask(index)},
                       ),
