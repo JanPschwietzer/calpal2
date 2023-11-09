@@ -1,4 +1,5 @@
 import 'package:calpal2/pages/habits/habits_page_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,7 @@ class HabitsPage extends StatelessWidget {
         Column(
           children: [
             const SizedBox(height: 20),
-            const Text('Gewohnheiten'),
+            Text(tr('habit_title')),
             const SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(

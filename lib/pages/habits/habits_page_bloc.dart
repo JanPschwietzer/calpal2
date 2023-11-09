@@ -1,5 +1,6 @@
 import 'package:calpal2/models/db_habit.dart';
 import 'package:calpal2/pages/habits/edit_habit/edit_habit_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 enum StreakColor {
@@ -67,7 +68,7 @@ class HabitsPageBloc extends ChangeNotifier {
     int days = 0;
 
     if (habit.lastTimeFinished == null) {
-      return 'Heute fällig!';
+      return tr('habit_due_today');
     }
 
     switch(habit.frequency) {
@@ -86,11 +87,11 @@ class HabitsPageBloc extends ChangeNotifier {
     }
 
     if (days <= 0) {
-      return 'Heute fällig!';
+      return tr('habit_due_today');
     } else if (days == 1) {
-      return 'Morgen fällig!';
+      return tr('habit_due_tomorrow');
     } else if (days > 1) {
-      return 'In ${days.abs()} Tagen fällig!';
+      return tr('habit_due_in_days', args: [days.abs().toString()]);
     }
     return '';
   }

@@ -2,6 +2,7 @@ import 'package:calpal2/backend/shared_preferences.dart';
 import 'package:calpal2/pages/home_page.dart';
 import 'package:calpal2/models/user_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SettingsPageBloc extends ChangeNotifier {
 
@@ -53,15 +54,15 @@ class SettingsPageBloc extends ChangeNotifier {
 
   void setDietGoalText() {
     if (dietGoal == DietGoal.gainWeightFast) {
-      dietGoalText = '+0,5 kg pro Woche';
+      dietGoalText = tr('settings_gain_weight_fast');
     } else if (dietGoal == DietGoal.gainWeight) {
-      dietGoalText = '+0,25 kg pro Woche';
+      dietGoalText = tr('settings_gain_weight');
     } else if (dietGoal == DietGoal.maintainWeight) {
-      dietGoalText = '0 kg pro Woche';
+      dietGoalText = tr('settings_maintain_weight');
     } else if (dietGoal == DietGoal.loseWeight) {
-      dietGoalText = '-0,25 kg pro Woche';
+      dietGoalText = tr('settings_lose_weight');
     } else if (dietGoal == DietGoal.loseWeightFast) {
-      dietGoalText = '-0,5 kg pro Woche';
+      dietGoalText = tr('settings_lose_weight_fast');
     }
     notifyListeners();
   }
@@ -88,13 +89,13 @@ class SettingsPageBloc extends ChangeNotifier {
 
   void setActivityLevelText() {
     if (activityLevel == ActivityLevel.extraActive) {
-      _activityLevelText = 'körperlich anstrengende Arbeit';
+      _activityLevelText = tr('settings_extra_active');
     } else if (activityLevel == ActivityLevel.veryActive) {
-      _activityLevelText = 'hauptsächlich stehend und gehend';
+      _activityLevelText = tr('settings_very_active');
     } else if (activityLevel == ActivityLevel.moderatelyActive) {
-      _activityLevelText = 'überwiegend sitzend';
+      _activityLevelText = tr('settings_moderately_active');
     } else if (activityLevel == ActivityLevel.lightlyActive) {
-      _activityLevelText = 'sitzend';
+      _activityLevelText = tr('settings_lightly_active');
     }
     notifyListeners();
   }

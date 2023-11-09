@@ -1,5 +1,6 @@
 import 'package:calpal2/pages/home_page.dart';
 import 'package:calpal2/pages/settings/settings_page_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Einstellungen'),
+        title: Text(tr('settings_title')),
         actions: [IconButton(
           icon: const Icon(Icons.close),
           onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage())),
@@ -30,13 +31,13 @@ class SettingsPage extends StatelessWidget {
                         child: Column(
                           children: [
                             const SizedBox(height: 20),
-                            const Text('Persönliche Daten'),
+                            Text(tr('settings_personal_info')),
                             const SizedBox(height: 20),
                             TextField(
                               controller: bloc.nameController,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Name',
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                labelText: tr('settings_name'),
                               ),
                             ),
                             const SizedBox(height: 10),
@@ -44,13 +45,13 @@ class SettingsPage extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Text('Geschlecht:'),
+                                  Text(tr('settings_sex')),
                                   Radio(
                                     value: true,
                                     groupValue: bloc.isMale,
                                     onChanged: (value) => bloc.isMale = value,
                                   ),
-                                  const Text('Männlich'),
+                                  Text(tr('settings_male')),
                                   const SizedBox(
                                     height: 24,
                                     child: VerticalDivider(width: 30, thickness: 1)
@@ -60,7 +61,7 @@ class SettingsPage extends StatelessWidget {
                                     groupValue: bloc.isMale,
                                     onChanged: (value) => bloc.isMale = value,
                                   ),
-                                  const Text('Weiblich'),
+                                  Text(tr('settings_female')),
                                 ],
                               ),
                             ),
@@ -69,9 +70,9 @@ class SettingsPage extends StatelessWidget {
                               controller: bloc.ageController,
                               keyboardType: const TextInputType.numberWithOptions(signed: true, decimal: false),
                               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Alter',
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                labelText: tr('settings_age'),
                               ),
                             ),
                             const SizedBox(height: 20),
@@ -79,9 +80,9 @@ class SettingsPage extends StatelessWidget {
                               controller: bloc.heightController,
                               keyboardType: const TextInputType.numberWithOptions(signed: true, decimal: false),
                               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Größe (in cm)',
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                labelText: tr('settings_height'),
                               ),
                             ),
                             const SizedBox(height: 20),
@@ -89,17 +90,17 @@ class SettingsPage extends StatelessWidget {
                               controller: bloc.weightController,
                               keyboardType: const TextInputType.numberWithOptions(signed: true, decimal: false),
                               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Gewicht (in kg)',
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                labelText: tr('settings_weight'),
                               ),
                             ),
                             const SizedBox(height: 20),
-                            const Text('Fitnessbezogene Daten'),
+                            Text(tr('settings_fitness_data')),
                             const SizedBox(height: 20),
                             SizedBox(width: double.infinity,
                               child: Column(children: [
-                                const Text('Aktivitätslevel auf der Arbeit:', textAlign: TextAlign.start),
+                                Text(tr('settings_activity_level'), textAlign: TextAlign.start),
                                 Text(bloc.activityLevelText ?? '', textAlign: TextAlign.start, style: const TextStyle(fontSize: 12),),
                               ],),
                             ),
@@ -110,7 +111,7 @@ class SettingsPage extends StatelessWidget {
                             const SizedBox(height: 20),
                             SizedBox(width: double.infinity,
                               child: Column(children: [
-                                const Text('Diätziel', textAlign: TextAlign.start),
+                                Text(tr('settings_diet_goal'), textAlign: TextAlign.start),
                                 Text(bloc.dietGoalText ?? '', textAlign: TextAlign.start, style: const TextStyle(fontSize: 12),),
                               ],),
                             ),
@@ -128,7 +129,7 @@ class SettingsPage extends StatelessWidget {
                                   backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primary),
                                   foregroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.onPrimary)
                                 ),
-                                child: const Text('Speichern'),
+                                child: Text(tr('btn_save')),
                                 
                               ),
                             ),

@@ -1,0 +1,70 @@
+{
+    "app_name": "CalPal",
+
+    "home_calory_tracker": "Calorie Tracker",
+    "home_calory_tracker_description": "Track your daily calory intake",
+    "home_habit_tracker": "Habit Tracker",
+    "home_habit_tracker_description": "Track your daily habits",
+    "home_supplement_tracker": "Supplement Tracker",
+    "home_supplement_tracker_description": "Track your daily supplement intake",
+    "home_history_tab": "History",
+    "home_history_tab_description": "View your history",
+
+    "calorie_title": "Hallo {}!",
+    "calorie_stranger": "Stranger",
+    "calorie_usage": "Calorie consumption",
+    "calorie_goal": "Your calorie-goal is {} kcal.",
+    "calorie_used": "= used",
+    "calorie_left": "= left",
+
+    "settings_title": "Settings",
+    "settings_personal_info": "Personal Info",
+    "settings_name": "Name",
+    "settings_sex": "Sex:",
+    "settings_male": "Male",
+    "settings_female": "Female",
+    "settings_age": "Age",
+    "settings_height": "Height (in cm)",
+    "settings_weight": "Weight (in kg)",
+    "settings_fitness_data": "Fitness Related Data",
+    "settings_activity_level": "Activity Level at work:",
+    "settings_diet_goal": "Diet Goal",
+
+    "settings_gain_weight_fast": "+0,5 kg per Week",
+    "settings_gain_weight": "+0,25 kg per Week",
+    "settings_maintain_weight": "0 kg per Week",
+    "settings_lose_weight": "-0,25 kg per Week",
+    "settings_lose_weight_fast": "-0,5 kg per Week",
+
+    "settings_extra_active": "physically demanding work",
+    "settings_very_active": "mainly standing and walking",
+    "settings_moderately_active": "mostly sitting",
+    "settings_lightly_active": "sitting",
+
+    "habit_title": "Habits",
+    "habit_due_today": "Due Today!",
+    "habit_due_tomorrow": "Due Tomorrow!",
+    "habit_due_in_days": "Due in {} days!",
+
+    "habit_add_title": "Add Habit",
+
+    "habit_edit_title": "Edit Habit",
+    "habit_edit_general_info": "General Info",
+    "habit_edit_name": "Name",
+    "habit_edit_description": "Description",
+    "habit_edit_frequency": "Frequency",
+
+    "habit_frequency_daily": "Daily",
+    "habit_frequency_weekly": "Weekly",
+    "habit_frequency_monthly": "Monthly",
+    "habit_frequency_yearly": "Yearly",
+
+    
+    "btn_save": "Save",
+    "btn_cancel": "Cancel",
+    "btn_ok": "OK",
+    "btn_add": "Add",
+    "btn_delete": "Delete",
+    "btn_edit": "Edit"
+
+}

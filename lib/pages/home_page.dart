@@ -3,6 +3,7 @@ import 'package:calpal2/pages/habits/add_habit/add_habit_page.dart';
 import 'package:calpal2/pages/habits/habits_page.dart';
 import 'package:calpal2/pages/settings/settings_page.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CalPal'),
+        title: Text(tr('app_name')),
         actions: [
           if (_currentIndex == 0) IconButton(
             icon: const Icon(Icons.settings),
@@ -42,22 +43,25 @@ class _HomePageState extends State<HomePage> {
           Placeholder()
         ],
       ),
-      bottomNavigationBar: NavigationBar(destinations: const [
+      bottomNavigationBar: NavigationBar(destinations: [
         NavigationDestination(
-          icon: Icon(Icons.donut_large),
-          label: 'Calorie Tracker',
+          icon: const Icon(Icons.donut_large),
+          label: tr('home_calory_tracker'),
+          tooltip: tr('home_calory_tracker_description'),
         ),
         NavigationDestination(
-          icon: Icon(Icons.fitness_center), 
-          label: 'Habit Tracker',
+          icon: const Icon(Icons.fitness_center),
+          label: tr('home_habit_tracker'),
+          tooltip: tr('home_habit_tracker_description'),
         ),
         NavigationDestination(
-          icon: Icon(Icons.medication),
-          label: 'Supplement Tracker',
+          icon: const Icon(Icons.medication),
+          label: tr('home_supplement_tracker'),
+          tooltip: tr('home_supplement_tracker_description'),
         ),
         NavigationDestination(
-          icon: Icon(Icons.calendar_month),
-          label: 'Show History',
+          icon: const Icon(Icons.calendar_month),
+          label: tr('home_history_tab'),
         ),
       ],
       selectedIndex: _currentIndex,

@@ -1,4 +1,5 @@
 import 'package:calpal2/pages/home_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class AddHabitPage extends StatelessWidget {
@@ -8,7 +9,7 @@ class AddHabitPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: const Text('Add Habit'),
+        title: Text(tr('habit_add_title')),
         actions: [
           IconButton(
           icon: const Icon(Icons.close),

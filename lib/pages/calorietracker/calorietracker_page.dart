@@ -2,9 +2,9 @@ import 'package:calpal2/backend/sqlite.dart';
 import 'package:calpal2/pages/calorietracker/add_product/add_product_page.dart';
 import 'package:calpal2/pages/calorietracker/calorietracker_page_bloc.dart';
 import 'package:calpal2/pages/calorietracker/edit_product/edit_product_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -41,7 +41,13 @@ class CalorieTrackerPageContent extends StatelessWidget {
                   Column(
                     children: [
                       const SizedBox(height: 20),
-                      Text('${bloc.userData.name != "" ? "Hallo ${bloc.userData.name}" : "Hallo Fremder"}!', style: const TextStyle(fontSize: 18)),
+                      Text(tr('calorie_title',
+                        args: [
+                          bloc.userData.name.isEmpty ?
+                            tr('calorie_stranger') :
+                            bloc.userData.name
+                        ]),
+                        style: const TextStyle(fontSize: 18)),
                       SfCircularChart(
                         title: ChartTitle(
                           text: 'Kalorienverbrauch',
@@ -76,21 +82,21 @@ class CalorieTrackerPageContent extends StatelessWidget {
                           const SizedBox(width: 15),
                           const Icon(Icons.info, color: Color(0xFF253C78)),
                           const SizedBox(width: 5),
-                          Text('Dein Kalorienziel beträgt ${bloc.userData.goalCalories} kcal.'),
+                          Text(tr('calorie_goal', args: [bloc.userData.goalCalories.toString()])),
                         ],
                       ),
                       const SizedBox(height: 10),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          SizedBox(width: 15),
-                          Icon(Icons.circle, color: Color(0xFF253C78)),
-                          SizedBox(width: 5),
-                          Text('= Verbraucht'),
-                          SizedBox(width: 15),
-                          Icon(Icons.circle, color: Colors.grey),
-                          SizedBox(width: 5),
-                          Text('= Übrig'),
+                          const SizedBox(width: 15),
+                          const Icon(Icons.circle, color: Color(0xFF253C78)),
+                          const SizedBox(width: 5),
+                          Text(tr('calorie_used')),
+                          const SizedBox(width: 15),
+                          const Icon(Icons.circle, color: Colors.grey),
+                          const SizedBox(width: 5),
+                          Text(tr('calorie_left')),
                         ],
                       ),
                       const SizedBox(height: 20),
@@ -100,7 +106,7 @@ class CalorieTrackerPageContent extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Column(children: [
-                        Text(bloc.products.length > 0 ? 'Heute gegessene Produkte:' : 'Noch keine Produkte gegessen'),
+                        Text(bloc.products.length > 0 ? tr('calorie_eaten_today') : tr('calorie_nothing_eaten')),
                         const SizedBox(height: 10),
                         ListView.builder(
                           shrinkWrap: true,
@@ -129,15 +135,15 @@ class CalorieTrackerPageContent extends StatelessWidget {
                                       final result = await showDialog(
                                         context: context,
                                         builder: (context) => AlertDialog(
-                                          title: const Text('Produkt löschen'),
-                                          content: const Text('Möchtest du das Produkt wirklich löschen?'),
+                                          title: Text(tr('calorie_popup_delete_title')),
+                                          content: Text(tr('calorie_popup_delete_text')),
                                           actions: [
                                             TextButton(
-                                              child: const Text('Abbrechen'),
+                                              child: Text(tr('btn_cancel')),
                                               onPressed: () => Navigator.pop(context, false),
                                             ),
                                             TextButton(
-                                              child: const Text('Löschen'),
+                                              child: Text(tr('btn_delete'), style: const TextStyle(color: Colors.red)),
                                               onPressed: () => Navigator.pop(context, true),
                                             ),
                                           ],
@@ -173,9 +179,9 @@ class CalorieTrackerPageContent extends StatelessWidget {
                           controller: bloc.searchController,
                           keyboardType: const TextInputType.numberWithOptions(signed: true, decimal: false),
                           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                          decoration: const InputDecoration(
-                            hintText: 'Barcode eingeben..',
-                            border: OutlineInputBorder(),
+                          decoration: InputDecoration(
+                            hintText: tr('calorie_type_barcode'),
+                            border: const OutlineInputBorder(),
                       
                           ),
                         ),

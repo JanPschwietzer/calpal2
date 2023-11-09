@@ -2,6 +2,7 @@ import 'package:calpal2/backend/shared_preferences.dart';
 import 'package:calpal2/backend/sqlite.dart';
 import 'package:calpal2/pages/calorietracker/add_product/add_product_page.dart';
 import 'package:calpal2/helper_widgets/snackbar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:simple_barcode_scanner/enum.dart';
@@ -88,20 +89,20 @@ class CalorieTrackerPageBloc extends ChangeNotifier {
 
   void searchProduct(BuildContext context) {
     if (_searchController.text.isEmpty) {
-      showSnackBar(context, 'Feld ist leer!');
+      showSnackBar(context, tr('calorie_field_empty'));
     } else {
       Navigator.push(context, MaterialPageRoute(builder: (context) => AddProductPage(tabKey: searchController.text))).then((value) => updateCalorieData());
     }
   }
 
   void scanBarcode(BuildContext context) async {
-    final result = await Navigator.push(context, MaterialPageRoute(builder: (context) => const SimpleBarcodeScannerPage(
-      appBarTitle: 'Barcode scannen',
+    final result = await Navigator.push(context, MaterialPageRoute(builder: (context) => SimpleBarcodeScannerPage(
+      appBarTitle: tr('calorie_scan_barcode'),
       scanType: ScanType.barcode,
     )));
 
     if (result == null) {
-      if (context.mounted) showSnackBar(context, 'Barcode wurde nicht gescannt!');
+      if (context.mounted) showSnackBar(context, tr('calorie_scan_failed'));
     } else {
       if (context.mounted) Navigator.push(context, MaterialPageRoute(builder: (context) => AddProductPage(tabKey: result))).then((value) => updateCalorieData());
     }

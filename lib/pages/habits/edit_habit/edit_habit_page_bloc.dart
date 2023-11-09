@@ -1,4 +1,5 @@
 import 'package:calpal2/models/db_habit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class EditHabitPageBloc extends ChangeNotifier {
@@ -12,15 +13,15 @@ class EditHabitPageBloc extends ChangeNotifier {
   String getFrequencyString(HabitFrequency frequency) {
     switch (frequency) {
       case HabitFrequency.daily:
-        return 'daily';
+        return tr('habit_frequency_daily');
       case HabitFrequency.weekly:
-        return 'weekly';
+        return tr('habit_frequency_weekly');
       case HabitFrequency.monthly:
-        return 'monthly';
+        return tr('habit_frequency_monthly');
       case HabitFrequency.yearly:
-        return 'yearly';
+        return tr('habit_frequency_yearly');
       default:
-        return 'daily';
+        return tr('habit_frequency_daily');
     }
   }
 
