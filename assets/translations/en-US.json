@@ -1,5 +1,5 @@
 {
-    "app_name": "CalPal",
+    "app_name": "CalPal (de)",
 
     "home_calory_tracker": "Calorie Tracker",
     "home_calory_tracker_description": "Track your daily calory intake",
@@ -10,12 +10,22 @@
     "home_history_tab": "History",
     "home_history_tab_description": "View your history",
 
-    "calorie_title": "Hallo {}!",
+    "calorie_title": "Hello {}!",
     "calorie_stranger": "Stranger",
     "calorie_usage": "Calorie consumption",
-    "calorie_goal": "Your calorie-goal is {} kcal.",
+    "calorie_goal": "Your caloric goal is {} kcal.",
     "calorie_used": "= used",
     "calorie_left": "= left",
+    "calorie_eaten_today": "Your eaten products:",
+    "calorie_nothing_eaten": "You haven't eaten anything yet.",
+    "calorie_type_barcode": "Type in Barcode..",
+
+    "calorie_field_empty": "Field is empty!",
+    "calorie_scan_barcode": "Scan Barcode",
+    "calorie_scan_failed": "Barcode was not scanned!",
+
+    "calorie_popup_delete_title": "Delete Product",
+    "calorie_popup_delete_text": "Do you really want to delete this product?",
 
     "settings_title": "Settings",
     "settings_personal_info": "Personal Info",
